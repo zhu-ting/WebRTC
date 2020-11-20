@@ -2,11 +2,71 @@
 <html>
     <head>
         <title>SimpleWebRTC</title>
+        <link rel="stylesheet" href="scripts/semantic-ui-css/semantic.min.css">
     </head>
 
     <body>
         <div class="ui container">
             <h1 class="ui header">Simple WebRTC Messenger</h1>
+
+            <div class="ui two column stackable grid">
+
+                <!-- Chat Section -->
+                <div class="ui ten wide column">
+                  <div class="ui segment">
+                    <!-- Chat Room Form -->
+                    <div class="ui form">
+                      <div class="fields">
+                        <div class="field">
+                          <label>User Name</label>
+                          <input type="text" placeholder="Enter user name" id="username" name="username">
+                        </div>
+                        <div class="field">
+                          <label>Room</label>
+                          <input type="text" placeholder="Enter room name" id="roomName" name="roomName">
+                        </div>
+                      </div>
+                      <br>
+                      <div class="ui buttons">
+                        <div id="create-btn" class="ui submit orange button">Create Room</div>
+                        <div class="or"></div>
+                        <div id="join-btn" class="ui submit green button">Join Room</div>
+                      </div>
+                    </div>
+                    <!-- Chat Room Messages -->
+                    <div id="chat"></div>
+                  </div>
+                </div>
+                <!-- End of Chat Section -->
+              
+                <!-- Local Camera -->
+                <div class="ui six wide column">
+                  <h4 class="ui center aligned header" style="margin:0;">
+                    Local Camera
+                  </h4>
+                  <img id="local-image" class="ui large image" src="images/image.png">
+                  <video id="local-video" class="ui large image hidden" autoplay></video>
+                </div>
+              
+              </div>
+              
+              <!-- Remote Cameras -->
+              <h3 class="ui center aligned header">Remote Cameras</h3>
+              <div id="remote-videos" class="ui stackable grid">
+                <div class="four wide column">
+                  <img class="ui centered medium image" src="images/image.png">
+                </div>
+                <div class="four wide column">
+                  <img class="ui centered medium image" src="images/image.png">
+                </div>
+                <div class="four wide column">
+                  <img class="ui centered medium image" src="images/image.png">
+                </div>
+                <div class="four wide column">
+                  <img class="ui centered medium image" src="images/image.png">
+                </div>
+              </div>
         </div>
+
     </body>
 </html>
