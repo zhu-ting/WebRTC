@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
     // Chat platform
-    const chatTemplate = Handlebars.compile('#chat-template').html();
+    const chatTemplate = Handlebars.compile($('#chat-template').html());
     const chatContentTemplate = Handlebars.compile($('#chat-content-template').html());
     const chatEl = $('#chat');
     const formEl = $('.form');
@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
     const localImageEl = $('#local-image');
     const localVideoEl = $('#local-video');
 
-    const remoteVideoTemplate = Handlebars.compiles($('#remote-video-template').html());
+    const remoteVideoTemplate = Handlebars.compile($('#remote-video-template').html());
     const remoteVideoEl = $('#remote-videos');
     let remoteVideosCount = 0;
 
