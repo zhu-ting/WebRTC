@@ -81,11 +81,9 @@ window.addEventListener('load', () => {
         postForm.form({
             message: 'empty',
         });
-        $('#post-btn').on('click', event => {
-            if (event.key === 13){
-                const message = $('#post-message').val();
-                postMessage(message);
-            }
+        $('#post-btn').on('click', () => {
+            const message = $('#post-message').val();
+            postMessage(message);
         });
     };
 
