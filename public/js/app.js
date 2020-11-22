@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
     const chatContentTemplate = Handlebars.compile($('#chat-content-template').html());
     const chatEl = $('#chat');
     const formEl = $('.form');
-    const message = [];
+    const messages = [];
     let username;
 
     const localImageEl = $('#local-image');
@@ -13,8 +13,6 @@ window.addEventListener('load', () => {
     const remoteVideoTemplate = Handlebars.compile($('#remote-video-template').html());
     const remoteVideoEl = $('#remote-videos');
     let remoteVideosCount = 0;
-
-    localVideoEl.hide();
 
     formEl.form({
         fields: {
@@ -27,9 +25,6 @@ window.addEventListener('load', () => {
         localVideoEl: 'local-video',
         remoteVideoEl: 'remote-videos',
         autoRequestMedia: true,
-        debug: false,
-        detectSpeakingEvents: true,
-        autoAdjustMic: false
     });
 
     webrtc.on('localStream', () => {
@@ -73,7 +68,7 @@ window.addEventListener('load', () => {
             postedOn: new Date().toLocaleString('en-GB'),
         };
         webrtc.sendToAll('chat', chatMessage);
-        message.push(chatMessage);
+        messages.push(chatMessage);
         $('#post-message').val(' ');
         updateChatMessages();
     };
@@ -86,8 +81,8 @@ window.addEventListener('load', () => {
         postForm.form({
             message: 'empty',
         });
-        $('#post-btn').on('click', () => {
-            if (event.keyCode === 13){
+        $('#post-btn').on('click', event => {
+            if (event.key === 13){
                 const message = $('#post-message').val();
                 postMessage(message);
             }
@@ -95,7 +90,7 @@ window.addEventListener('load', () => {
     };
 
     const updateChatMessages = () => {
-        const html = chatContentTemplate({ message });
+        const html = chatContentTemplate({ messages });
         const chatContentEl = $('#chat-content');
         chatContentEl.html(html);
         const scrollHeight = chatContentEl.prop('scrollHeight');
